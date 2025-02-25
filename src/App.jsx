@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <Router basename="/life">
+    <Router>
       <ScrollToTop />
       <Box
         sx={{
@@ -31,7 +31,7 @@ function App() {
       >
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Routes>
-          <Route path='/life' element={<Home />} />
+          {/* <Route path='/life' element={<Home />} /> */}
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/donate' element={<Donate darkMode={darkMode} />} />
