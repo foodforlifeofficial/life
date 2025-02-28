@@ -1,14 +1,14 @@
 import { Grid2, Container, Typography, Box } from "@mui/material";
 import DonationCard from "../Components/DonationCard";
 import { styled } from "@mui/system";
-import palestine from "../assets/palestine.jpg";
-import etiopia from "../assets/etiopia.jpg";
-import sudan from "../assets/sudan.jpg";
-import ukraine from "../assets/ukraine.jpg";
-import afgha from "../assets/afgha.jpg";
-import yemen from "../assets/yemen.jpg";
-import syria from "../assets/syria.jpeg";
-import somalia from "../assets/somalia.jpg";
+import palestine from "/palestine.jpg";
+import etiopia from "/etiopia.jpg";
+import sudan from "/sudan.jpg";
+import ukraine from "/ukraine.jpg";
+import afgha from "/afgha.jpg";
+import yemen from "/yemen.jpg";
+import syria from "/syria.jpeg";
+import somalia from "/somalia.jpg";
 
 const Section = styled(Box)({
   padding: "10px 0",
