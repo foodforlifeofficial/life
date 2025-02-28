@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   CardContent,
+  LinearProgress,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import homeBack from "/home.jpg";
@@ -44,6 +45,29 @@ const BackgroundBox = styled(Box)({
   borderRadius: "8px",
 });
 export default function Home({ darkMode }) {
+  const startDate = new Date("2025-01-01");
+  const today = new Date();
+
+  const getInitialValuePalestine = () => {
+    const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    let value = 53435 + daysElapsed * 500;
+    let percentage = (value / 350000) * 100;
+
+    return { value, percentage };
+  };
+
+  const [palestineData] = useState(getInitialValuePalestine());
+
+  const getInitialValueUcraine = () => {
+    const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    let value = 43320 + daysElapsed * 500;
+    let percentage = (value / 250000) * 100;
+
+    return { value, percentage };
+  };
+
+  const [ucraineData] = useState(getInitialValueUcraine());
+
   return (
     <Box
       sx={{
@@ -61,14 +85,14 @@ export default function Home({ darkMode }) {
       >
         <Box sx={{ maxWidth: "100%" }}>
           <Typography
-            variant='h3'
-            component='h1'
-            fontWeight='bold'
+            variant="h3"
+            component="h1"
+            fontWeight="bold"
             gutterBottom
           >
             Fight hunger with us
           </Typography>
-          <Typography variant='h6' color={darkMode}>
+          <Typography variant="h6" color={darkMode}>
             With just a few taps on your phone you can donate to someone in need
             and the World Food Programme will deliver the meals. Help us end
             hunger by donating now.
@@ -83,7 +107,7 @@ export default function Home({ darkMode }) {
           width: "100%",
         }}
       >
-        <Grid container alignItems='center'>
+        <Grid container alignItems="center">
           <Grid
             item
             xs={12}
@@ -106,8 +130,8 @@ export default function Home({ darkMode }) {
             >
               <CardContent>
                 <Typography
-                  variant='body2'
-                  color='text.primary'
+                  variant="body2"
+                  color="text.primary"
                   sx={{
                     textAlign: "justify",
                     textIndent: "2em",
@@ -135,19 +159,70 @@ export default function Home({ darkMode }) {
                   in the world", many of them losing their limbs and undergoing
                   surgery without anaesthesia.
                 </Typography>
-                <Typography variant='h5' fontWeight='bold' gutterBottom mt={3}>
-                  <YellowButton variant='contained' component={Link} to='/donate'>
+                <Typography
+                  variant="h5"
+                  fontWeight="bold"
+                  gutterBottom
+                  mt={3}
+                  textAlign="center"
+                >
+                  <YellowButton
+                    variant="contained"
+                    component={Link}
+                    to="/donate"
+                    sx={{ mb: 2 }} // Adaugă spațiu între buton și progres bar
+                  >
                     Donate for Palestine
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg"
+                      alt="Palestine Flag"
+                      style={{
+                        width: "24px",
+                        height: "16px",
+                        marginLeft: "8px",
+                      }}
+                    />
                   </YellowButton>
-                  <img
-                    src='https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg'
-                    alt='Palestine Flag'
-                    style={{
-                      width: "24px",
-                      height: "16px",
-                      marginLeft: "8px",
+
+                  <Box
+                    sx={{
+                      maxWidth: "70%",
+                      mx: "auto",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
                     }}
-                  />
+                  >
+                    <LinearProgress
+                      variant="determinate"
+                      value={Math.min(palestineData.percentage, 100)}
+                      sx={{ width: "100%" }}
+                      color="success"
+                    />
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        mt: 1,
+                      }}
+                    >
+                      <Typography
+                        variant="body2"
+                        fontWeight="bold"
+                        color="primary"
+                      >
+                        {palestineData.value} meals
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="primary"
+                        fontWeight="bold"
+                      >
+                        {palestineData.percentage.toFixed(2)}%
+                      </Typography>
+                    </Box>
+                  </Box>
                 </Typography>
               </CardContent>
             </Card>
@@ -162,12 +237,12 @@ export default function Home({ darkMode }) {
           width: "100%",
         }}
       >
-        <Grid container alignItems='center'>
+        <Grid container alignItems="center">
           <Grid item xs={12} md={6}>
             <Typography
-              variant='h4'
-              component='h2'
-              fontWeight='bold'
+              variant="h4"
+              component="h2"
+              fontWeight="bold"
               gutterBottom
             >
               Our Purpose
@@ -203,7 +278,7 @@ export default function Home({ darkMode }) {
           width: "100%",
         }}
       >
-        <Grid container alignItems='center'>
+        <Grid container alignItems="center">
           <Grid
             item
             xs={12}
@@ -226,8 +301,8 @@ export default function Home({ darkMode }) {
             >
               <CardContent>
                 <Typography
-                  variant='body2'
-                  color='text.primary'
+                  variant="body2"
+                  color="text.primary"
                   sx={{
                     textAlign: "justify",
                     textIndent: "2em",
@@ -254,20 +329,60 @@ export default function Home({ darkMode }) {
                   years without going to school, growing up in a climate
                   dominated by fear and uncertainty.
                 </Typography>
-                <Typography variant='h5' fontWeight='bold' gutterBottom mt={3}>
-                <YellowButton variant='contained' component={Link} to='/donate'>
-                    Donate for Ukraine
-                  </YellowButton>
+
+                <YellowButton variant="contained" component={Link} to="/donate">
+                  Donate for Ukraine
                   <img
-                    src='https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg'
-                    alt='Ukrainian Flag'
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
+                    alt="Ukrainian Flag"
                     style={{
                       width: "24px",
                       height: "16px",
                       marginLeft: "8px",
                     }}
                   />
-                </Typography>
+                </YellowButton>
+
+                <Box
+                  sx={{
+                    maxWidth: "70%",
+                    mx: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    mt: 2, // Adăugăm un spațiu între buton și progress bar
+                  }}
+                >
+                  <LinearProgress
+                    variant="determinate"
+                    value={Math.min(ucraineData.percentage, 100)}
+                    sx={{ width: "100%" }}
+                    color="secondary"
+                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      mt: 1,
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      fontWeight="bold"
+                      color="primary"
+                    >
+                      {ucraineData.value} meals
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="primary"
+                      fontWeight="bold"
+                    >
+                      {ucraineData.percentage.toFixed(2)}%
+                    </Typography>
+                  </Box>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
@@ -281,7 +396,7 @@ export default function Home({ darkMode }) {
           width: "100%",
         }}
       >
-        <Grid container alignItems='center'>
+        <Grid container alignItems="center">
           <Grid item xs={12} md={6}>
             {/* <Typography
               variant='h4'
@@ -292,7 +407,7 @@ export default function Home({ darkMode }) {
               Our Purpose
             </Typography> */}
             <Typography
-              variant='body2'
+              variant="body2"
               color={darkMode}
               sx={{
                 textAlign: "justify",
@@ -308,7 +423,7 @@ export default function Home({ darkMode }) {
             </Typography>
             <Typography
               color={darkMode}
-              variant='body2'
+              variant="body2"
               sx={{
                 textAlign: "justify",
                 textIndent: "2em",

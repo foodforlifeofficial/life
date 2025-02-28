@@ -87,7 +87,7 @@ export default function About({ darkMode }) {
                 <PeopleAltIcon fontSize='small' />
               </Avatar>
               <Typography variant='body2' color='text.secondary'>
-                89,433 supporters
+                93,237 supporters
               </Typography>
             </Box>
             <Typography
@@ -95,7 +95,7 @@ export default function About({ darkMode }) {
               color='primary'
               sx={{ fontWeight: "bold", fontSize: "1.5rem" }}
             >
-              465,123 meals
+              542,978 meals
             </Typography>
           </CardContent>
         </Card>
@@ -181,6 +181,78 @@ export default function About({ darkMode }) {
           <CardContent>
             <Typography variant='h5' fontWeight='bold' gutterBottom>
               Updates
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              27/02/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            Rescue teams evacuated and provided medical care to the injured – Dozens of people in critical condition were transported to hospitals and received emergency treatment.
+              </Typography>
+
+             <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              20/02/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            Children in affected areas received water and food – Thousands of food and drinking water packages were distributed to families with children to prevent malnutrition and dehydration.
+             </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              15/02/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            Temporary housing was erected for those left homeless – Hundreds of refugees benefited from tents and temporary shelters to cope with the crisis situation.
+             </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              02/02/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            Thousands of people were fed thanks to the aid received – The distribution of basic food provided the necessary food for families left without resources.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              21/01/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            Humanitarian organizations provided medical support – Volunteer teams managed to bring necessary medicines and medical equipment to hospitals in conflict areas.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              12/01/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+            In the first two days of the ceasefire, over 500 truckloads of aid have arrived in Gaza. FFL plans to deliver at least 35 truckloads of supplies daily.
             </Typography>
 
             <Typography
