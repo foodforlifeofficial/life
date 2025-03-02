@@ -35,14 +35,14 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
 
   return (
     <AppBar
-      position='fixed'
+      position="fixed"
       sx={{
         backgroundColor: darkMode ? "#121212" : "#fff",
         color: darkMode ? "#fff" : "#000",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Box display='flex' alignItems='center'>
+        <Box display="flex" alignItems="center">
           {/* <Typography
             variant='body1'
             sx={{
@@ -56,10 +56,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           >
             FoodForLife
           </Typography> */}
-          <Link to='/'>
+          <Link to="/">
             <img
               src={logo}
-              alt='Company Logo'
+              alt="Company Logo"
               style={{
                 height: "50px",
               }}
@@ -68,9 +68,9 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           <Switch
             checked={darkMode}
             onChange={toggleDarkMode}
-            color='default'
+            color="default"
           />
-          <Typography variant='body1' color='secundary'>
+          <Typography variant="body1" color="secundary">
             Dark mode
           </Typography>
         </Box>
@@ -78,9 +78,9 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         {isMobile ? (
           <Box>
             <IconButton
-              edge='end'
-              color='inherit'
-              aria-label='menu'
+              edge="end"
+              color="inherit"
+              aria-label="menu"
               onClick={handleMenuOpen}
             >
               <MenuIcon />
@@ -90,26 +90,37 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               open={Boolean(anchorEl)}
               onClose={handleMenuClose}
             >
-              <MenuItem component={Link} to='/' onClick={handleMenuClose}>
+              <MenuItem
+                component={Link}
+                to="/fundraising"
+                onClick={handleMenuClose}
+                color="secondary"
+              >
+                Fundraising goals
+              </MenuItem>
+              <MenuItem component={Link} to="/" onClick={handleMenuClose}>
                 Home
               </MenuItem>
-              <MenuItem component={Link} to='/donate' onClick={handleMenuClose}>
+              <MenuItem component={Link} to="/donate" onClick={handleMenuClose}>
                 Donate
               </MenuItem>
-              <MenuItem component={Link} to='/about' onClick={handleMenuClose}>
+              <MenuItem component={Link} to="/about" onClick={handleMenuClose}>
                 About
               </MenuItem>
             </Menu>
           </Box>
         ) : (
           <Box>
-            <Button color='inherit' component={Link} to='/'>
+            <Button color="secondary" component={Link} to="/fundraising">
+              Fundraising goals
+            </Button>
+            <Button color="inherit" component={Link} to="/">
               Home
             </Button>
-            <Button color='inherit' component={Link} to='/donate'>
+            <Button color="inherit" component={Link} to="/donate">
               Donate
             </Button>
-            <Button color='inherit' component={Link} to='/about'>
+            <Button color="inherit" component={Link} to="/about">
               About
             </Button>
           </Box>

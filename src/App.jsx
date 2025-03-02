@@ -10,6 +10,7 @@ import TermsOfUse from "./Pages/TermsOfUse";
 import { Box } from "@mui/material";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ScrollToTop from "./Components/ScrollToTop";
+import FundraisingPage from "./Pages/FundraisingPage";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -32,15 +33,19 @@ function App() {
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Routes>
           {/* <Route path='/life' element={<Home />} /> */}
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/donate' element={<Donate darkMode={darkMode} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/donate" element={<Donate darkMode={darkMode} />} />
           <Route
-            path='/termsofuse'
+            path="/fundraising"
+            element={<FundraisingPage darkMode={darkMode} />}
+          />
+          <Route
+            path="/termsofuse"
             element={<TermsOfUse darkMode={darkMode} />}
           />
           <Route
-            path='/privacypolicy'
+            path="/privacypolicy"
             element={<PrivacyPolicy darkMode={darkMode} />}
           />
         </Routes>
