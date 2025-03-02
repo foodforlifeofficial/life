@@ -11,13 +11,13 @@ import { People, AccessTime } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export default function DonationCard({
-  title,
-  image,
-  totalMeals,
-  currentMeals,
-  supporters,
+  title = "Unknown",
+  image = "",
+  totalMeals = 0,
+  currentMeals = 0,
+  supporters = 0,
 }) {
-  const percentage = (currentMeals / totalMeals) * 100;
+  const percentage = totalMeals ? (currentMeals / totalMeals) * 100 : 0;
 
   return (
     <Card sx={{ maxWidth: 400, borderRadius: 3, boxShadow: 3 }}>
