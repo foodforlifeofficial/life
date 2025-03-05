@@ -8,19 +8,39 @@ import {
   Button,
   Box,
   useMediaQuery,
+  LinearProgress,
 } from "@mui/material";
-// import { RxLetterSpacing } from "react-icons/rx";
 import { Link } from "react-router-dom";
+
+// Funcție pentru calculul meselor și procentajului
+const startDate = new Date("2025-01-01");
+const today = new Date();
+
+const calculateMealsData = (initialValue, dailyIncrease, totalMeals) => {
+  const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+  const value = initialValue + daysElapsed * dailyIncrease;
+  const percentage = Math.min((value / totalMeals) * 100, 100); // Max 100%
+  return { value, percentage };
+};
 
 const DonationComponent = ({
   image,
   title,
   description,
-  donateLink,
+  flagUrl,
   position = "left",
   urgent = false,
+  initialValue,
+  dailyIncrease,
+  totalMeals,
 }) => {
   const isSmallScreen = useMediaQuery("(max-width:550px)");
+
+  const { value: currentMeals, percentage } = calculateMealsData(
+    initialValue,
+    dailyIncrease,
+    totalMeals
+  );
 
   return (
     <Card
@@ -66,20 +86,61 @@ const DonationComponent = ({
             URGENT
           </div>
         )}
+
         <Typography variant="h6" fontWeight="bold">
           {title}
         </Typography>
+
         <Typography
           variant="body2"
           color="text.secondary"
           sx={{
             textIndent: "50px",
             textAlign: "justify",
-            RxLetterSpacing: "3px",
           }}
         >
           {description}
         </Typography>
+
+        {/* <Box sx={{ mt: 2 }}>
+          <Typography variant="body2">
+            <strong>Meals provided:</strong> {currentMeals.toLocaleString()} /{" "}
+            {totalMeals.toLocaleString()}
+          </Typography>
+          <LinearProgress
+            variant="determinate"
+            value={percentage}
+            sx={{ height: 8, borderRadius: 5, mt: 1 }}
+          />
+          <Typography variant="caption">
+            {percentage.toFixed(2)}% completed
+          </Typography>
+        </Box> */}
+
+        <Box sx={{ mt: 2 }}>
+          <LinearProgress
+            variant="determinate"
+            value={Math.min(percentage, 100)}
+            sx={{ width: "100%" }}
+            color="success"
+          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              mt: 1,
+            }}
+          >
+            <Typography variant="body2" fontWeight="bold" color="primary">
+              {currentMeals.toLocaleString()} meals
+            </Typography>
+            <Typography variant="body2" color="primary" fontWeight="bold">
+              {percentage.toFixed(2)}%
+            </Typography>
+          </Box>
+        </Box>
+
         <Box
           sx={{
             display: "flex",
@@ -89,12 +150,8 @@ const DonationComponent = ({
             width: "100%",
           }}
         >
-          {/* <Button variant="outlined" color="primary">
-            Read more
-          </Button> */}
           <Button
             variant="contained"
-            // color="warning"
             sx={{
               backgroundColor: "#f4c430",
               color: "#000",
@@ -109,8 +166,16 @@ const DonationComponent = ({
             component={Link}
             to="/donate"
           >
-            {/* href={donateLink}> */}
             Donate now
+            <img
+              src={flagUrl}
+              alt="Flag"
+              style={{
+                width: "24px",
+                height: "16px",
+                marginLeft: "8px",
+              }}
+            />
           </Button>
         </Box>
       </CardContent>
@@ -122,9 +187,12 @@ DonationComponent.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  donateLink: PropTypes.string.isRequired,
+  flagUrl: PropTypes.string.isRequired,
   position: PropTypes.oneOf(["left", "right"]),
   urgent: PropTypes.bool,
+  initialValue: PropTypes.number.isRequired,
+  dailyIncrease: PropTypes.number.isRequired,
+  totalMeals: PropTypes.number.isRequired,
 };
 
 export default DonationComponent;

@@ -80,20 +80,19 @@ const Donate = ({ darkMode }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showError, setShowError] = useState(false);
 
-
   const [showHeart, setShowHeart] = useState(false);
   const [showBrokenHeart, setShowBrokenHeart] = useState(false);
-  
+
   const handleCheckboxChange = (event) => {
     setIsConfirmed(event.target.checked);
     if (event.target.checked) {
       setShowHeart(true);
       setShowBrokenHeart(false);
-      setTimeout(() => setShowHeart(false), 1500); 
+      setTimeout(() => setShowHeart(false), 1500);
     } else {
-      setShowHeart(false); 
+      setShowHeart(false);
       setShowBrokenHeart(true);
-      setTimeout(() => setShowBrokenHeart(false), 1500); 
+      setTimeout(() => setShowBrokenHeart(false), 1500);
     }
   };
 
@@ -123,10 +122,11 @@ const Donate = ({ darkMode }) => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
         }}
       >
-        {showHeart && <Heart />}{showBrokenHeart && <BrokenHeart />}
+        {showHeart && <Heart />}
+        {showBrokenHeart && <BrokenHeart />}
         <Typography
-          variant='h3'
-          fontWeight='bold'
+          variant="h3"
+          fontWeight="bold"
           gutterBottom
           sx={{ color: darkMode ? "#000" : "#fff" }}
         >
@@ -134,7 +134,7 @@ const Donate = ({ darkMode }) => {
         </Typography>
 
         <Typography
-          variant='h6'
+          variant="h6"
           paragraph
           sx={{ color: darkMode ? "#000" : "#fff" }}
         >
@@ -177,21 +177,21 @@ const Donate = ({ darkMode }) => {
         <Box
           mt={4}
           sx={{
-            opacity: isConfirmed ? 1 : 0.3, 
-            pointerEvents: isConfirmed ? "auto" : "none", 
+            opacity: isConfirmed ? 1 : 0.3,
+            pointerEvents: isConfirmed ? "auto" : "none",
             transition: "opacity 0.3s ease",
             display: "flex",
             flexDirection: "column",
-            gap: 3, 
+            gap: 3,
           }}
         >
           {/* <PayPalButton /> */}
 
           <Button
-            variant='outlined'
-            size='large'
-            href='https://paypal.me/sharethemealorg'
-            target='_blank'
+            variant="outlined"
+            size="large"
+            href="https://paypal.me/sharethemealorg"
+            target="_blank"
             sx={{
               color: darkMode ? "black" : "white",
               borderColor: darkMode ? "#000" : "#fff",
@@ -206,14 +206,14 @@ const Donate = ({ darkMode }) => {
             }}
           >
             Donate with PayPal Link
-            <Box component='span' sx={{ ml: 1 }}>
+            <Box component="span" sx={{ ml: 1 }}>
               <SlPaypal size={30} />
             </Box>
           </Button>
           <Button
-            variant='outlined'
-            size='large'
-            href='https://commerce.coinbase.com/checkout/a33276c8-5af1-48f6-958b-9f98e229edeb'
+            variant="outlined"
+            size="large"
+            href="https://commerce.coinbase.com/checkout/a33276c8-5af1-48f6-958b-9f98e229edeb"
             sx={{
               // backgroundColor: "#4caf50",
               color: darkMode ? "black" : "white",
@@ -229,7 +229,7 @@ const Donate = ({ darkMode }) => {
             }}
           >
             Donate with Crypto
-            <Box component='span' sx={{ ml: 1 }}>
+            <Box component="span" sx={{ ml: 1 }}>
               <RiBtcLine size={30} />
             </Box>
           </Button>

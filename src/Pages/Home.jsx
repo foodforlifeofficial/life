@@ -54,29 +54,7 @@ const BackgroundBox = styled(Box)({
 
 export default function Home({ darkMode }) {
   const result = calculateMealsData();
-  const startDate = new Date("2025-01-01");
-  const today = new Date();
 
-  const getInitialValuePalestine = () => {
-    const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    let value = 53435 + daysElapsed * 500;
-    let percentage = (value / 350000) * 100;
-
-    return { value, percentage };
-  };
-
-  const isSmallScreen = useMediaQuery("(max-width:600px)");
-  const [palestineData] = useState(getInitialValuePalestine());
-
-  const getInitialValueUcraine = () => {
-    const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    let value = 43320 + daysElapsed * 500;
-    let percentage = (value / 250000) * 100;
-
-    return { value, percentage };
-  };
-
-  const [ucraineData] = useState(getInitialValueUcraine());
   return (
     <Box
       sx={{
@@ -124,7 +102,11 @@ export default function Home({ darkMode }) {
              and children are among the most affected, facing malnutrition and medical emergencies."
               donateLink="https://donation-link.com"
               position="left"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/383px-Flag_of_Palestine.svg.png"
               urgent
+              initialValue={53435}
+              dailyIncrease={500}
+              totalMeals={350000}
             />
 
             {/* ukraine */}
@@ -135,7 +117,11 @@ export default function Home({ darkMode }) {
               medical care, and deep psychological trauma, growing up in fear and uncertainty, often without schooling."
               donateLink="https://another-donation.com"
               position="right"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/383px-Flag_of_Ukraine.svg.png"
               urgent
+              initialValue={43320}
+              dailyIncrease={500}
+              totalMeals={250000}
             />
 
             {/* sudan */}
@@ -144,7 +130,11 @@ export default function Home({ darkMode }) {
               title="Sudan: Aid for Families"
               description="In Sudan, ongoing conflict has left millions displaced, struggling with extreme food shortages, lack of medical care, and violence. Children face severe malnutrition, disease outbreaks, and disrupted education, growing up in constant fear and instability."
               donateLink="https://sudan-donation.com"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_Sudan.svg/383px-Flag_of_Sudan.svg.png"
               position="left"
+              initialValue={2240}
+              dailyIncrease={500}
+              totalMeals={400000}
             />
 
             {/* ethiopia */}
@@ -153,7 +143,11 @@ export default function Home({ darkMode }) {
               title="Ethiopia: Help Vulnerable Communities"
               description="In Ethiopia, ongoing conflict and drought have displaced thousands, leaving families without food, water, and medical care. Children suffer from severe malnutrition, lack of education, and the constant threat of violence, struggling to survive in extreme hardship."
               donateLink="https://ethiopia-donation.com"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Flag_of_Ethiopia.svg/383px-Flag_of_Ethiopia.svg.png"
               position="right"
+              initialValue={2014}
+              dailyIncrease={500}
+              totalMeals={150000}
             />
 
             {/* yemen */}
@@ -162,7 +156,11 @@ export default function Home({ darkMode }) {
               title="Yemen: Provide Urgent Relief"
               description="In Yemen, years of war have led to one of the world's worst humanitarian crises. Millions of children face starvation, lack of medical care, and unsafe living conditions. With infrastructure destroyed, access to clean water and education is severely limited."
               donateLink="https://yemen-donation.com"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Flag_of_Yemen.svg/383px-Flag_of_Yemen.svg.png"
               position="left"
+              initialValue={2800}
+              dailyIncrease={500}
+              totalMeals={200000}
             />
 
             {/* somalia */}
@@ -172,6 +170,10 @@ export default function Home({ darkMode }) {
               description="In Somalia, prolonged drought and conflict have led to severe food shortages, forcing millions into crisis. Children suffer from extreme malnutrition, lack of healthcare, and displacement, struggling to survive in one of the world's harshest humanitarian emergencies."
               donateLink="https://somalia-donation.com"
               position="right"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Flag_of_Somalia.svg/383px-Flag_of_Somalia.svg.png"
+              initialValue={4352}
+              dailyIncrease={100}
+              totalMeals={150000}
             />
 
             {/* syria */}
@@ -180,7 +182,11 @@ export default function Home({ darkMode }) {
               title="Syria: Rebuild Lives After War"
               description="In Syria, years of conflict have left millions displaced, with children facing hunger, lack of medical care, and unsafe living conditions. Schools and hospitals lie in ruins, making education and healthcare nearly inaccessible, while families struggle to survive amid ongoing instability."
               donateLink="https://syria-donation.com"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Flag_of_the_Syrian_revolution.svg/330px-Flag_of_the_Syrian_revolution.svg.png"
               position="left"
+              initialValue={6352}
+              dailyIncrease={100}
+              totalMeals={150000}
             />
 
             {/* Afghanistan */}
@@ -189,7 +195,11 @@ export default function Home({ darkMode }) {
               title="Afghanistan: Support Families in Crisis"
               description="In Afghanistan, ongoing conflict and economic collapse have left millions in extreme poverty. Children face severe malnutrition, lack of medical care, and limited access to education, struggling to survive amid instability and humanitarian crisis."
               donateLink="https://afghanistan-donation.com"
+              flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_Taliban.svg/383px-Flag_of_the_Taliban.svg.png"
               position="right"
+              initialValue={4362}
+              dailyIncrease={100}
+              totalMeals={150000}
             />
 
             {/* <iframe
