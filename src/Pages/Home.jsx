@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import {
   Box,
-  Grid,
+  Grid2,
   Typography,
   Button,
   Card,
   CardContent,
+  TextField,
+  useMediaQuery,
+  Container,
+  Stack,
   LinearProgress,
 } from "@mui/material";
 import { styled } from "@mui/system";
@@ -13,17 +17,20 @@ import homeBack from "/home.jpg";
 import homeBack2 from "/home2.jpg";
 import ua1 from "/ua1.jpg";
 import ua2 from "/ua2.jpg";
+import somaliaImage from "/somalia.jpg";
+import syriaImage from "/syria.jpeg";
+import afghanistanImage from "/afgha.jpg";
+import yemenImage from "/yemen.jpg";
+import ethiopiaImage from "/ethiopia.jpg";
+import sudanImage from "/sudan.jpg";
+
 import { Link } from "react-router-dom";
+import { calculateMealsData } from "../Components/Common";
+import DonationComponent from "../Components/DonationComponent";
 
 const Section = styled(Box)({
   padding: "10px 0",
   textAlign: "center",
-});
-
-const Image = styled("img")({
-  width: "100%",
-  height: "auto",
-  borderRadius: "8px",
 });
 
 const YellowButton = styled(Button)({
@@ -39,12 +46,14 @@ const YellowButton = styled(Button)({
 });
 const BackgroundBox = styled(Box)({
   width: "100%",
-  height: "400px", // Adjust the height as needed
+  height: "400px",
   backgroundSize: "cover",
   backgroundPosition: "center",
   borderRadius: "8px",
 });
+
 export default function Home({ darkMode }) {
+  const result = calculateMealsData();
   const startDate = new Date("2025-01-01");
   const today = new Date();
 
@@ -56,6 +65,7 @@ export default function Home({ darkMode }) {
     return { value, percentage };
   };
 
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
   const [palestineData] = useState(getInitialValuePalestine());
 
   const getInitialValueUcraine = () => {
@@ -98,357 +108,102 @@ export default function Home({ darkMode }) {
           </Typography>
         </Box>
       </Section>
-
-      {/* Call to Action Section */}
       <Section
         sx={{
           backgroundColor: darkMode,
           width: "100%",
         }}
       >
-        <Grid container alignItems="center">
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              padding: "0 20px 0 0",
-              boxSizing: "border-box",
-            }}
-          >
-            <BackgroundBox style={{ backgroundImage: `url(${homeBack})` }} />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                width: "100%",
-                borderRadius: "16px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                overflow: "hidden",
-              }}
-            >
-              <CardContent>
-                <Typography
-                  variant="body2"
-                  color="text.primary"
-                  sx={{
-                    textAlign: "justify",
-                    textIndent: "2em",
-                    fontSize: "12pt",
-                  }}
-                >
-                  The situation in Palestine, especially in the Gaza Strip, is
-                  marked by armed conflicts and a deep humanitarian crisis
-                  characterized by famine and massive destruction. The clashes
-                  generated a severe food crisis. International organizations
-                  warn that hundreds of thousands of people in Gaza are facing
-                  starvation. A UN report from October 2024 estimates that
-                  around 345,000 people in the Gaza Strip will reach
-                  "catastrophic" levels of hunger this winter, up from 133,000
-                  today. Palestinian officials and representatives of the
-                  international community have accused Israel of using
-                  starvation as a weapon of war by restricting access to food,
-                  water and medicine. The Palestinian Foreign Minister stated in
-                  December 2023 that Israel is deliberately using starvation
-                  against the population of Gaza. Children are among the most
-                  affected by this crisis. Malnutrition and lack of access to
-                  adequate health services have led to an alarming increase in
-                  cases of illness and death among minors. The UN reported that
-                  Gaza now has "the highest number of child amputees per capita
-                  in the world", many of them losing their limbs and undergoing
-                  surgery without anaesthesia.
-                </Typography>
-                <Typography
-                  variant="h5"
-                  fontWeight="bold"
-                  gutterBottom
-                  mt={3}
-                  textAlign="center"
-                >
-                  <YellowButton
-                    variant="contained"
-                    component={Link}
-                    to="/donate"
-                    sx={{ mb: 2 }} // Adaugă spațiu între buton și progres bar
-                  >
-                    Donate for Palestine
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg"
-                      alt="Palestine Flag"
-                      style={{
-                        width: "24px",
-                        height: "16px",
-                        marginLeft: "8px",
-                      }}
-                    />
-                  </YellowButton>
+        <Container sx={{ py: 0 }}>
+          <Stack spacing={4}>
+            {/* palestine */}
+            <DonationComponent
+              image={homeBack}
+              title="Give emergency aid in Palestine"
+              description="The conflict in Gaza has caused severe food shortages and a humanitarian crisis. Officials accuse Israel of using starvation as a weapon,
+             and children are among the most affected, facing malnutrition and medical emergencies."
+              donateLink="https://donation-link.com"
+              position="left"
+              urgent
+            />
 
-                  <Box
-                    sx={{
-                      maxWidth: "70%",
-                      mx: "auto",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <LinearProgress
-                      variant="determinate"
-                      value={Math.min(palestineData.percentage, 100)}
-                      sx={{ width: "100%" }}
-                      color="success"
-                    />
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                        mt: 1,
-                      }}
-                    >
-                      <Typography
-                        variant="body2"
-                        fontWeight="bold"
-                        color="primary"
-                      >
-                        {palestineData.value} meals
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="primary"
-                        fontWeight="bold"
-                      >
-                        {palestineData.percentage.toFixed(2)}%
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Section>
+            {/* ukraine */}
+            <DonationComponent
+              image={ua1}
+              title="Ukraine: Support families"
+              description="In Ukraine, war has displaced millions of children, forcing many into underground shelters or refugee life. They endure hunger, lack of 
+              medical care, and deep psychological trauma, growing up in fear and uncertainty, often without schooling."
+              donateLink="https://another-donation.com"
+              position="right"
+              urgent
+            />
 
-      {/* Purpose Section */}
-      <Section
-        sx={{
-          backgroundColor: darkMode,
-          width: "100%",
-        }}
-      >
-        <Grid container alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Typography
-              variant="h4"
-              component="h2"
-              fontWeight="bold"
-              gutterBottom
-            >
-              Our Purpose
-            </Typography>
-            <Typography>
-              Empowering people to end global hunger. We’re here to make
-              fighting hunger accessible for everyone.
-            </Typography>
-            <Typography color={darkMode}>
-              We’re here to end global hunger. And we’re guessing you are too.
-              That’s why we were founded in 2015 under the United Nations World
-              Food Programme — to make fighting hunger accessible to everyone.
-              Because with just €0.70 and a few taps on your phone, you can
-              share your meal with someone in need.
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              padding: "0 20px",
-              boxSizing: "border-box",
-            }}
-          >
-            <BackgroundBox style={{ backgroundImage: `url(${homeBack2})` }} />
-          </Grid>
-        </Grid>
-      </Section>
-      <Section
-        sx={{
-          backgroundColor: darkMode,
-          width: "100%",
-        }}
-      >
-        <Grid container alignItems="center">
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              padding: "0 20px 0 0",
-              boxSizing: "border-box",
-            }}
-          >
-            <BackgroundBox style={{ backgroundImage: `url(${ua1})` }} />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                width: "100%",
-                borderRadius: "16px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                overflow: "hidden",
-              }}
-            >
-              <CardContent>
-                <Typography
-                  variant="body2"
-                  color="text.primary"
-                  sx={{
-                    textAlign: "justify",
-                    textIndent: "2em",
-                    fontSize: "12pt",
-                  }}
-                >
-                  Children in conflict zones, such as Palestine and Ukraine,
-                  live in a reality marked by deep suffering, insecurity and
-                  acute deprivation. In Palestine, especially in the Gaza Strip,
-                  the war turned childhood into a nightmare. Thousands of
-                  children have been killed or injured, and those who survive
-                  face daily shortages of food, water and medicine. Destroyed
-                  streets and bombed homes no longer offer safety, and schools
-                  frequently become collateral targets of attacks. Education
-                  comes to an abrupt halt and the prospect of a stable future
-                  vanishes under the weight of continued violence.
-                  <br />
-                  <br />
-                  In Ukraine, the war has forced millions of children from their
-                  homes, some becoming refugees in other countries, while others
-                  live in underground shelters, hiding from bombings. Lack of
-                  food, limited access to medical care and psychological trauma
-                  become part of their daily lives. Many children have spent
-                  years without going to school, growing up in a climate
-                  dominated by fear and uncertainty.
-                </Typography>
-                <YellowButton variant="contained" component={Link} to="/donate">
-                  Donate for Ukraine
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
-                    alt="Ukrainian Flag"
-                    style={{
-                      width: "24px",
-                      height: "16px",
-                      marginLeft: "8px",
-                    }}
-                  />
-                </YellowButton>
+            {/* sudan */}
+            <DonationComponent
+              image={sudanImage}
+              title="Sudan: Aid for Families"
+              description="In Sudan, ongoing conflict has left millions displaced, struggling with extreme food shortages, lack of medical care, and violence. Children face severe malnutrition, disease outbreaks, and disrupted education, growing up in constant fear and instability."
+              donateLink="https://sudan-donation.com"
+              position="left"
+            />
 
-                <Box
-                  sx={{
-                    maxWidth: "70%",
-                    mx: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    mt: 2, // Adăugăm un spațiu între buton și progress bar
-                  }}
-                >
-                  <LinearProgress
-                    variant="determinate"
-                    value={Math.min(ucraineData.percentage, 100)}
-                    sx={{ width: "100%" }}
-                    color="secondary"
-                  />
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                      mt: 1,
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      fontWeight="bold"
-                      color="primary"
-                    >
-                      {ucraineData.value} meals
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="primary"
-                      fontWeight="bold"
-                    >
-                      {ucraineData.percentage.toFixed(2)}%
-                    </Typography>
-                  </Box>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Section>
+            {/* ethiopia */}
+            <DonationComponent
+              image={ethiopiaImage}
+              title="Ethiopia: Help Vulnerable Communities"
+              description="In Ethiopia, ongoing conflict and drought have displaced thousands, leaving families without food, water, and medical care. Children suffer from severe malnutrition, lack of education, and the constant threat of violence, struggling to survive in extreme hardship."
+              donateLink="https://ethiopia-donation.com"
+              position="right"
+            />
 
-      {/* Purpose Section */}
-      <Section
-        sx={{
-          backgroundColor: darkMode,
-          width: "100%",
-        }}
-      >
-        <Grid container alignItems="center">
-          <Grid item xs={12} md={6}>
-            {/* <Typography
-              variant='h4'
-              component='h2'
-              fontWeight='bold'
-              gutterBottom
-            >
-              Our Purpose
-            </Typography> */}
-            <Typography
-              variant="body2"
-              color={darkMode}
-              sx={{
-                textAlign: "justify",
-                textIndent: "2em",
-                fontSize: "12pt",
-              }}
-            >
-              In both conflicts, children are affected by devastating losses –
-              be it parents, friends or their own homes. Malnutrition is
-              becoming more widespread and hunger is becoming a silent but
-              lethal weapon. Hospitals are overwhelmed, and in many cases, basic
-              treatments are lacking, leaving children to suffer in silence.
-            </Typography>
-            <Typography
-              color={darkMode}
-              variant="body2"
-              sx={{
-                textAlign: "justify",
-                textIndent: "2em",
-                fontSize: "12pt",
-              }}
-            >
-              This reality outlines a generation for whom war has become
-              normality, a generation that sees its future threatened at every
-              turn. The international community looks on with concern, but
-              solutions are slow to bring immediate relief. Despite humanitarian
-              efforts, children continue to be the most vulnerable to these
-              tragedies, and their voices often go unheard, lost in the noise of
-              conflict.
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              padding: "0 20px",
-              boxSizing: "border-box",
-            }}
-          >
-            <BackgroundBox style={{ backgroundImage: `url(${ua2})` }} />
-          </Grid>
-        </Grid>
+            {/* yemen */}
+            <DonationComponent
+              image={yemenImage}
+              title="Yemen: Provide Urgent Relief"
+              description="In Yemen, years of war have led to one of the world's worst humanitarian crises. Millions of children face starvation, lack of medical care, and unsafe living conditions. With infrastructure destroyed, access to clean water and education is severely limited."
+              donateLink="https://yemen-donation.com"
+              position="left"
+            />
+
+            {/* somalia */}
+            <DonationComponent
+              image={somaliaImage}
+              title="Somalia: Fight Hunger and Instability"
+              description="In Somalia, prolonged drought and conflict have led to severe food shortages, forcing millions into crisis. Children suffer from extreme malnutrition, lack of healthcare, and displacement, struggling to survive in one of the world's harshest humanitarian emergencies."
+              donateLink="https://somalia-donation.com"
+              position="right"
+            />
+
+            {/* syria */}
+            <DonationComponent
+              image={syriaImage}
+              title="Syria: Rebuild Lives After War"
+              description="In Syria, years of conflict have left millions displaced, with children facing hunger, lack of medical care, and unsafe living conditions. Schools and hospitals lie in ruins, making education and healthcare nearly inaccessible, while families struggle to survive amid ongoing instability."
+              donateLink="https://syria-donation.com"
+              position="left"
+            />
+
+            {/* Afghanistan */}
+            <DonationComponent
+              image={afghanistanImage}
+              title="Afghanistan: Support Families in Crisis"
+              description="In Afghanistan, ongoing conflict and economic collapse have left millions in extreme poverty. Children face severe malnutrition, lack of medical care, and limited access to education, struggling to survive amid instability and humanitarian crisis."
+              donateLink="https://afghanistan-donation.com"
+              position="right"
+            />
+
+            {/* <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/xmA5rfCiolk?si=wxheWGSzv_Sh1ndF"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe> */}
+          </Stack>
+        </Container>
       </Section>
     </Box>
   );

@@ -16,7 +16,7 @@ import logo from "/logo.png";
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1500);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -101,7 +101,22 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <MenuItem component={Link} to="/" onClick={handleMenuClose}>
                 Home
               </MenuItem>
-              <MenuItem component={Link} to="/donate" onClick={handleMenuClose}>
+              <MenuItem
+                component={Link}
+                to="/donate"
+                onClick={handleMenuClose}
+                sx={{
+                  backgroundColor: "#f4c430",
+                  color: "#000",
+                  padding: "3px 32px 3px 32px",
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#dba100",
+                  },
+                }}
+              >
                 Donate
               </MenuItem>
               <MenuItem component={Link} to="/about" onClick={handleMenuClose}>
@@ -117,11 +132,26 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
             <Button color="inherit" component={Link} to="/">
               Home
             </Button>
-            <Button color="inherit" component={Link} to="/donate">
-              Donate
-            </Button>
             <Button color="inherit" component={Link} to="/about">
               About
+            </Button>
+            <Button
+              color="black"
+              component={Link}
+              to="/donate"
+              sx={{
+                backgroundColor: "#f4c430",
+                color: "#000",
+                padding: "3px 32px 3px 32px",
+                fontSize: "16px",
+                fontWeight: "bold",
+                textTransform: "none",
+                "&:hover": {
+                  backgroundColor: "#dba100",
+                },
+              }}
+            >
+              Donate
             </Button>
           </Box>
         )}
