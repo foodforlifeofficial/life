@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import backgroundImage from "/donation.jpg";
 import { SlPaypal } from "react-icons/sl";
-// import PayPalButton from "../PayPal/PayPalButton";
 import { RiBtcLine } from "react-icons/ri";
 import { keyframes } from "@mui/system";
 
@@ -75,13 +74,16 @@ const BrokenHeart = () => (
 );
 
 const Donate = ({ darkMode }) => {
-  const [showOptions, setShowOptions] = useState(false);
-  const [selectedCrypto, setSelectedCrypto] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showError, setShowError] = useState(false);
 
   const [showHeart, setShowHeart] = useState(false);
   const [showBrokenHeart, setShowBrokenHeart] = useState(false);
+
+  const visaLogo =
+    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg";
+  const mastercardLogo =
+    "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
 
   const handleCheckboxChange = (event) => {
     setIsConfirmed(event.target.checked);
@@ -185,8 +187,37 @@ const Donate = ({ darkMode }) => {
             gap: 3,
           }}
         >
-          {/* <PayPalButton /> */}
+          {/* DonationAlerts */}
+          <Button
+            variant="outlined"
+            size="large"
+            href="https://www.donationalerts.com/r/foodforlife"
+            target="_blank"
+            sx={{
+              color: darkMode ? "black" : "white",
+              borderColor: darkMode ? "#000" : "#fff",
+              padding: "12px 32px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#0e9e3c",
+                color: "white",
+              },
+            }}
+          >
+            Donate with Card
+            <Box component="span" sx={{ ml: 1, display: "flex", gap: 1 }}>
+              <img src={visaLogo} alt="Visa" style={{ height: "18px" }} />
+              <img
+                src={mastercardLogo}
+                alt="Mastercard"
+                style={{ height: "24px" }}
+              />
+            </Box>
+          </Button>
 
+          {/* <PayPalButton /> */}
           <Button
             variant="outlined"
             size="large"
