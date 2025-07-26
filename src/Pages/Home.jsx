@@ -1,55 +1,27 @@
 import React, { useState } from "react";
 import {
   Box,
-  Grid2,
   Typography,
   Button,
-  Card,
-  CardContent,
-  TextField,
-  useMediaQuery,
   Container,
   Stack,
-  LinearProgress,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import homeBack from "/home.jpg";
-import homeBack2 from "/home2.jpg";
 import ua1 from "/ua1.jpg";
-import ua2 from "/ua2.jpg";
 import somaliaImage from "/somalia.jpg";
 import syriaImage from "/syria.jpeg";
 import afghanistanImage from "/afgha.jpg";
 import yemenImage from "/yemen.jpg";
 import ethiopiaImage from "/ethiopia.jpg";
 import sudanImage from "/sudan.jpg";
-
-import { Link } from "react-router-dom";
+import gif from "../assets/gif.gif";
 import { calculateMealsData } from "../Components/Common";
 import DonationComponent from "../Components/DonationComponent";
 
 const Section = styled(Box)({
   padding: "10px 0",
   textAlign: "center",
-});
-
-const YellowButton = styled(Button)({
-  backgroundColor: "#f4c430",
-  color: "#000",
-  padding: "12px 32px",
-  fontSize: "16px",
-  fontWeight: "bold",
-  textTransform: "none",
-  "&:hover": {
-    backgroundColor: "#dba100",
-  },
-});
-const BackgroundBox = styled(Box)({
-  width: "100%",
-  height: "400px",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  borderRadius: "8px",
 });
 
 export default function Home({ darkMode }) {
@@ -123,6 +95,22 @@ export default function Home({ darkMode }) {
               dailyIncrease={500}
               totalMeals={250000}
             />
+
+            <Box sx={{ textAlign: "center", mt: 8, mb: 4 }}>
+              <Box
+                component="img"
+                src={gif}
+                alt="Donation animation"
+                sx={{
+                  width: "100%",
+                  maxWidth: "400px",
+                  margin: "0 auto",
+                  display: "block",
+                  borderRadius: 4,
+                }}
+              />
+
+            </Box>
 
             {/* sudan */}
             <DonationComponent
@@ -201,7 +189,6 @@ export default function Home({ darkMode }) {
               dailyIncrease={100}
               totalMeals={150000}
             />
-
             {/* <iframe
               width="560"
               height="315"
