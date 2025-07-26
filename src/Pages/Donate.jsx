@@ -11,67 +11,167 @@ import { SlPaypal } from "react-icons/sl";
 import { RiBtcLine } from "react-icons/ri";
 import { keyframes } from "@mui/system";
 
-const heartAnimation = keyframes`
+const heartPulse = keyframes`
   0% {
-    transform: scale(1);
-    opacity: 0;
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 5px #ff4d6d, 0 0 10px #ff4d6d, 0 0 20px #ff0a3c;
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.15) rotate(5deg);
+    text-shadow: 0 0 10px #ff6f8c, 0 0 20px #ff2a58, 0 0 30px #ff0045;
+    opacity: 1;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(0deg);
+    text-shadow: 0 0 15px #ff3b5b, 0 0 30px #ff0041, 0 0 40px #ff0025;
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.15) rotate(-5deg);
+    text-shadow: 0 0 10px #ff6f8c, 0 0 20px #ff2a58, 0 0 30px #ff0045;
     opacity: 1;
   }
   100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-`;
-
-const brokenHeartAnimation = keyframes`
-  0% {
-    transform: rotate(0deg) scale(1);
-    opacity: 0;
-  }
-  50% {
-    transform: rotate(45deg) scale(1.2);
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 5px #ff4d6d, 0 0 10px #ff4d6d, 0 0 20px #ff0a3c;
     opacity: 1;
   }
+`;
+
+const brokenHeartShake = keyframes`
+  0% {
+    transform: rotate(0deg) translateX(0) scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 3px #ff4d6d);
+  }
+  20% {
+    transform: rotate(-15deg) translateX(-5px) scale(1.1);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #ff2a3c);
+  }
+  40% {
+    transform: rotate(15deg) translateX(5px) scale(1.1);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #ff2a3c);
+  }
+  60% {
+    transform: rotate(-10deg) translateX(-3px) scale(1);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px #ff0033);
+  }
+  80% {
+    transform: rotate(10deg) translateX(3px) scale(0.9);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 3px #ff0022);
+  }
   100% {
-    transform: rotate(90deg) scale(1);
+    transform: rotate(0deg) translateX(0) scale(0.8);
     opacity: 0;
+    filter: none;
   }
 `;
 
-const Heart = () => (
-  <Box
-    sx={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      fontSize: "70px",
-      color: "red",
-      animation: `${heartAnimation} 1.5s ease-in-out`,
-    }}
-  >
-    ❤️
-  </Box>
-);
+const cryingFaceAnimation = keyframes`
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  50% { opacity: 0.7; transform: translateY(5px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(10px) scale(1); }
+`;
 
-const BrokenHeart = () => (
-  <Box
-    sx={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      fontSize: "70px",
-      color: "red",
-      animation: `${brokenHeartAnimation} 1.5s ease-in-out`,
-    }}
-  >
-    💔
-  </Box>
-);
+// Multiple hearts that pulse
+const HeartsAnimation = ({ count = 7 }) => {
+  const hearts = Array.from({ length: count }, (_, i) => {
+    const top = Math.random() * 90 + 5;
+    const left = Math.random() * 90 + 5;
+    const size = Math.random() * 50 + 30;
+    const duration = (Math.random() * 2 + 2).toFixed(2);
+    const delay = (Math.random() * 2).toFixed(2);
+
+    return (
+      <Box
+        key={i}
+        component="span"
+        sx={{
+          position: "absolute",
+          top: `${top}%`,
+          left: `${left}%`,
+          fontSize: `${size}px`,
+          color: "#ff1a44",
+          animation: `${heartPulse} ${duration}s ease-in-out infinite`,
+          animationDelay: `${delay}s`,
+          userSelect: "none",
+          filter: "drop-shadow(0 0 5px #ff0044)",
+          pointerEvents: "none",
+          transformOrigin: "center center",
+          zIndex: 9999,
+        }}
+      >
+        ❤️
+      </Box>
+    );
+  });
+
+  return <>{hearts}</>;
+};
+
+// Multiple broken hearts with crying faces
+const BrokenHeartsAnimation = ({ count = 5 }) => {
+  const brokenHearts = Array.from({ length: count }, (_, i) => {
+    const top = Math.random() * 70 + 15;
+    const left = Math.random() * 70 + 15;
+    const size = Math.random() * 50 + 40;
+    const duration = (Math.random() * 2 + 2).toFixed(2);
+    const delay = (Math.random() * 2).toFixed(2);
+
+    // Crying face position near the broken heart with small random offset
+    const cryingTop = top + Math.random() * 10 - 5;
+    const cryingLeft = left + Math.random() * 10 - 5;
+    const cryingSize = size / 2.5;
+
+    return (
+      <React.Fragment key={i}>
+        <Box
+          component="span"
+          sx={{
+            position: "absolute",
+            top: `${top}%`,
+            left: `${left}%`,
+            fontSize: `${size}px`,
+            color: "#ff1a44",
+            animation: `${brokenHeartShake} ${duration}s ease forwards`,
+            animationDelay: `${delay}s`,
+            userSelect: "none",
+            pointerEvents: "none",
+            zIndex: 9999,
+            transformOrigin: "center center",
+          }}
+        >
+          💔
+        </Box>
+        <Box
+          component="span"
+          sx={{
+            position: "absolute",
+            top: `${cryingTop}%`,
+            left: `${cryingLeft}%`,
+            fontSize: `${cryingSize}px`,
+            color: "#3399ff",
+            animation: `${cryingFaceAnimation} ${duration}s ease forwards`,
+            animationDelay: `${delay}s`,
+            userSelect: "none",
+            pointerEvents: "none",
+            zIndex: 9999,
+            transformOrigin: "center center",
+          }}
+        >
+          😢
+        </Box>
+      </React.Fragment>
+    );
+  });
+
+  return <>{brokenHearts}</>;
+};
 
 const Donate = ({ darkMode }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -88,13 +188,13 @@ const Donate = ({ darkMode }) => {
   const handleCheckboxChange = (event) => {
     setIsConfirmed(event.target.checked);
     if (event.target.checked) {
-      setShowHeart(true);
       setShowBrokenHeart(false);
-      setTimeout(() => setShowHeart(false), 1500);
+      setShowHeart(true);
+      setTimeout(() => setShowHeart(false), 4000);
     } else {
       setShowHeart(false);
       setShowBrokenHeart(true);
-      setTimeout(() => setShowBrokenHeart(false), 1500);
+      setTimeout(() => setShowBrokenHeart(false), 2000);
     }
   };
 
@@ -122,10 +222,12 @@ const Donate = ({ darkMode }) => {
           color: darkMode ? "#000" : "#fff",
           borderRadius: "12px",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          position: "relative",
+          overflow: "visible",
         }}
       >
-        {showHeart && <Heart />}
-        {showBrokenHeart && <BrokenHeart />}
+        {showHeart && <HeartsAnimation count={15} />}
+        {showBrokenHeart && <BrokenHeartsAnimation count={10} />}
         <Typography
           variant="h3"
           fontWeight="bold"
@@ -187,7 +289,6 @@ const Donate = ({ darkMode }) => {
             gap: 3,
           }}
         >
-          {/* DonationAlerts */}
           <Button
             variant="outlined"
             size="large"
@@ -217,7 +318,6 @@ const Donate = ({ darkMode }) => {
             </Box>
           </Button>
 
-          {/* <PayPalButton /> */}
           <Button
             variant="outlined"
             size="large"
@@ -246,7 +346,6 @@ const Donate = ({ darkMode }) => {
             size="large"
             href="https://commerce.coinbase.com/checkout/a33276c8-5af1-48f6-958b-9f98e229edeb"
             sx={{
-              // backgroundColor: "#4caf50",
               color: darkMode ? "black" : "white",
               padding: "16px 40px",
               borderColor: darkMode ? "#000" : "#fff",
