@@ -16,6 +16,7 @@ import yemenImage from "/yemen.jpg";
 import ethiopiaImage from "/ethiopia.jpg";
 import sudanImage from "/sudan.jpg";
 import gif from "../assets/gif.gif";
+import video from "../assets/video.mp4";
 import { calculateMealsData } from "../Components/Common";
 import DonationComponent from "../Components/DonationComponent";
 
@@ -58,6 +59,40 @@ export default function Home({ darkMode }) {
           </Typography>
         </Box>
       </Section>
+
+      <Section
+        sx={{
+          backgroundColor: darkMode,
+          // py: 8,
+        }}
+      >
+        <Container maxWidth="md" sx={{ position: "relative", textAlign: "center" }}>
+          <Box
+            component="video"
+            src={video}
+            controls
+            autoPlay
+            muted
+            loop
+            sx={{
+              width: "100%",
+              maxWidth: "800px",
+              height: "auto",
+              borderRadius: 4,
+              boxShadow: "0px 10px 30px rgba(0,0,0,0.3)",
+            }}
+          />
+            <Typography
+              variant="h4"
+              component="h2"
+              fontWeight="bold"
+              sx={{ mb: 3 }}
+            >
+              Together, we can end child hunger
+            </Typography>
+        </Container>
+      </Section>
+
       <Section
         sx={{
           backgroundColor: darkMode,
@@ -96,22 +131,6 @@ export default function Home({ darkMode }) {
               totalMeals={250000}
             />
 
-            <Box sx={{ textAlign: "center", mt: 8, mb: 4 }}>
-              <Box
-                component="img"
-                src={gif}
-                alt="Donation animation"
-                sx={{
-                  width: "100%",
-                  maxWidth: "400px",
-                  margin: "0 auto",
-                  display: "block",
-                  borderRadius: 4,
-                }}
-              />
-
-            </Box>
-
             {/* sudan */}
             <DonationComponent
               image={sudanImage}
@@ -137,6 +156,7 @@ export default function Home({ darkMode }) {
               dailyIncrease={500}
               totalMeals={150000}
             />
+            
 
             {/* yemen */}
             <DonationComponent
@@ -189,16 +209,22 @@ export default function Home({ darkMode }) {
               dailyIncrease={100}
               totalMeals={150000}
             />
-            {/* <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/xmA5rfCiolk?si=wxheWGSzv_Sh1ndF"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe> */}
+            
+             <Box sx={{ textAlign: "center", mt: 8, mb: 4 }}>
+              <Box
+                component="img"
+                src={gif}
+                alt="Donation animation"
+                sx={{
+                  width: "100%",
+                  maxWidth: "400px",
+                  margin: "0 auto",
+                  display: "block",
+                  borderRadius: 4,
+                }}
+              />
+
+            </Box>
           </Stack>
         </Container>
       </Section>
