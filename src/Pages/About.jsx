@@ -19,7 +19,7 @@ const images = [
 ];
 const SlideBox = styled(Box)({
   width: "100%",
-  height: "400px", 
+  height: "400px",
   backgroundSize: "cover",
   backgroundPosition: "center",
   borderRadius: "8px",
@@ -181,6 +181,78 @@ export default function About({ darkMode }) {
           <CardContent>
             <Typography variant='h5' fontWeight='bold' gutterBottom>
               Updates
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              18/06/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              FFL distributed 12,000 emergency food packages in flood-affected areas of northern Bangladesh after heavy monsoon rains displaced thousands.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              02/05/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              In Palestine, over 4,500 children from low-income families received hot vegetarian meals and hygiene kits through school-based programs.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              11/04/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              FFL delivered 9,700 meal kits to internally displaced people in Kharkiv and Dnipro, Ukraine, as conflict escalated in the east.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              23/03/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              With the arrival of Ramadan, FFL supported 6,200 families in Gaza with food parcels including rice, lentils, oil, and dates.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              10/02/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              14,800 meals were served in temporary shelters in Morocco following the 6.1-magnitude earthquake near Marrakesh.
+            </Typography>
+
+            <Typography
+              variant='subtitle1'
+              fontWeight='bold'
+              sx={{ marginTop: "16px" }}
+              textAlign='left'
+            >
+              05/01/2025
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              21,000 children in India received school backpacks filled with food snacks, stationery, and hygiene items as part of the “Back to School” campaign.
             </Typography>
 
             <Typography
