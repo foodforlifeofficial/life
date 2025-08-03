@@ -226,8 +226,8 @@ const Donate = ({ darkMode }) => {
           overflow: "visible",
         }}
       >
-        {showHeart && <HeartsAnimation count={15} />}
-        {showBrokenHeart && <BrokenHeartsAnimation count={10} />}
+        {/* {showHeart && <HeartsAnimation count={15} />}
+        {showBrokenHeart && <BrokenHeartsAnimation count={10} />} */}
         <Typography
           variant="h3"
           fontWeight="bold"
@@ -245,7 +245,7 @@ const Donate = ({ darkMode }) => {
           Every donation helps provide meals for those in need. Choose your
           preferred payment method below.
         </Typography>
-
+{/* 
         <Box mt={4}>
           <FormControlLabel
             control={
@@ -270,19 +270,19 @@ const Donate = ({ darkMode }) => {
               </Typography>
             }
           />
-        </Box>
+        </Box> */}
 
-        {showError && (
+        {/* {showError && (
           <Typography mt={2} sx={{ color: "red" }}>
             You must confirm to proceed with the donation.
           </Typography>
-        )}
+        )} */}
 
         <Box
           mt={4}
           sx={{
-            opacity: isConfirmed ? 1 : 0.3,
-            pointerEvents: isConfirmed ? "auto" : "none",
+            opacity: 1,
+            pointerEvents: "auto",
             transition: "opacity 0.3s ease",
             display: "flex",
             flexDirection: "column",
@@ -363,6 +363,16 @@ const Donate = ({ darkMode }) => {
               <RiBtcLine size={30} />
             </Box>
           </Button>
+
+          <Typography
+                sx={{
+                  color: "#b5b5b5",
+                  fontSize: 12,
+                }}
+              >
+                Once you donate, you automatically confirm that you are donating voluntarily and that you are not forced by other factors, 
+                as well as confirming that you have read the terms of use and agree to all points.
+              </Typography>
         </Box>
       </Box>
     </Box>
