@@ -11,6 +11,7 @@ import { Box } from "@mui/material";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ScrollToTop from "./Components/ScrollToTop";
 import FundraisingPage from "./Pages/FundraisingPage";
+import TrackingWrapper from "./hooks/TrackingWrapper";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <Router>
+      <TrackingWrapper />
       <ScrollToTop />
       <Box
         sx={{
