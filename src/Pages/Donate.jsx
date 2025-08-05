@@ -201,7 +201,7 @@ const Donate = ({ darkMode }) => {
   const handleAnalyticsEvent = (method) => {
     if (window.gtag) {
     window.gtag('event', 'donation_click', {
-      method: method, // ex: 'card', 'paypal', 'crypto'
+      donation_method: method, // ex: 'card', 'paypal', 'crypto'
     });
   }
 };
