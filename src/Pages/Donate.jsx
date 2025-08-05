@@ -198,11 +198,10 @@ const Donate = ({ darkMode }) => {
     }
   };
 
-  const handleAnalyticsEvent = (eventName) => {
-  if (typeof gtag === "function") {
-    gtag("event", eventName, {
-      event_category: "Donation",
-      event_label: eventName,
+  const handleAnalyticsEvent = (method) => {
+    if (window.gtag) {
+    window.gtag('event', 'donation_click', {
+      method: method, // ex: 'card', 'paypal', 'crypto'
     });
   }
 };
