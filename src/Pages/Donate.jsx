@@ -198,6 +198,16 @@ const Donate = ({ darkMode }) => {
     }
   };
 
+  const handleAnalyticsEvent = (eventName) => {
+  if (typeof gtag === "function") {
+    gtag("event", eventName, {
+      event_category: "Donation",
+      event_label: eventName,
+    });
+  }
+};
+
+
   return (
     <Box
       sx={{
@@ -245,38 +255,6 @@ const Donate = ({ darkMode }) => {
           Every donation helps provide meals for those in need. Choose your
           preferred payment method below.
         </Typography>
-{/* 
-        <Box mt={4}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={isConfirmed}
-                onChange={handleCheckboxChange}
-                sx={{
-                  color: showError ? "red" : darkMode ? "#000" : "#fff",
-                }}
-              />
-            }
-            label={
-              <Typography
-                sx={{
-                  color: showError ? "red" : darkMode ? "#000" : "#fff",
-                  fontSize: 13,
-                }}
-              >
-                Confirm that you donate voluntarily and that you are not forced
-                by other factors, as well as confirm that you have read the
-                terms of use and agree to all points.
-              </Typography>
-            }
-          />
-        </Box> */}
-
-        {/* {showError && (
-          <Typography mt={2} sx={{ color: "red" }}>
-            You must confirm to proceed with the donation.
-          </Typography>
-        )} */}
 
         <Box
           mt={4}
@@ -291,6 +269,7 @@ const Donate = ({ darkMode }) => {
         >
           <Button
             variant="outlined"
+            onClick={() => handleAnalyticsEvent("donate_card")}
             size="large"
             href="https://www.donationalerts.com/r/foodforlife"
             target="_blank"
@@ -321,6 +300,7 @@ const Donate = ({ darkMode }) => {
           <Button
             variant="outlined"
             size="large"
+            onClick={() => handleAnalyticsEvent("donate_paypal")}
             href="https://paypal.me/sharethemealorg"
             target="_blank"
             sx={{
@@ -336,13 +316,14 @@ const Donate = ({ darkMode }) => {
               },
             }}
           >
-            Donate with PayPal Link
+            Donate with PayPal
             <Box component="span" sx={{ ml: 1 }}>
               <SlPaypal size={30} />
             </Box>
           </Button>
           <Button
             variant="outlined"
+            onClick={() => handleAnalyticsEvent("donate_crypto")}
             size="large"
             href="https://commerce.coinbase.com/checkout/a33276c8-5af1-48f6-958b-9f98e229edeb"
             sx={{
