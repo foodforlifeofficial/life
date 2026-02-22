@@ -181,7 +181,7 @@ const Donate = ({ darkMode }) => {
   const [showBrokenHeart, setShowBrokenHeart] = useState(false);
 
   const visaLogo =
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg";
+    "https://upload.wikimedia.org/wikipedia/commons/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg";
   const mastercardLogo =
     "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg";
 
@@ -300,7 +300,8 @@ const Donate = ({ darkMode }) => {
             variant="outlined"
             size="large"
             onClick={() => handleAnalyticsEvent("donate_paypal")}
-            href="https://paypal.me/sharethemealorg"
+            // href="https://paypal.me/sharethemealorg"
+            href="https://paypal.me/foodforlifes"
             target="_blank"
             sx={{
               color: darkMode ? "black" : "white",

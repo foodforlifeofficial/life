@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 
 // Funcție pentru calculul meselor și procentajului
-const startDate = new Date("2025-01-01");
+const startDate = new Date("2026-01-01");
 const today = new Date();
 
 const calculateMealsData = (initialValue, dailyIncrease, totalMeals) => {

@@ -111,7 +111,7 @@ export default function Home({ darkMode }) {
               position="left"
               flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/383px-Flag_of_Palestine.svg.png"
               urgent
-              initialValue={53435}
+              initialValue={435}
               dailyIncrease={500}
               totalMeals={350000}
             />
@@ -126,7 +126,7 @@ export default function Home({ darkMode }) {
               position="right"
               flagUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/383px-Flag_of_Ukraine.svg.png"
               urgent
-              initialValue={43320}
+              initialValue={3320}
               dailyIncrease={500}
               totalMeals={250000}
             />
@@ -154,7 +154,7 @@ export default function Home({ darkMode }) {
               position="right"
               initialValue={2014}
               dailyIncrease={500}
-              totalMeals={150000}
+              totalMeals={250000}
             />
             
 
@@ -168,7 +168,7 @@ export default function Home({ darkMode }) {
               position="left"
               initialValue={2800}
               dailyIncrease={500}
-              totalMeals={200000}
+              totalMeals={500000}
             />
 
             {/* somalia */}
