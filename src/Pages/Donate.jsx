@@ -301,7 +301,7 @@ const Donate = ({ darkMode }) => {
             size="large"
             onClick={() => handleAnalyticsEvent("donate_paypal")}
             // href="https://paypal.me/sharethemealorg"
-            href="https://paypal.me/foodforlifes"
+            href="https://paypal.me/foodforlifenow"
             target="_blank"
             sx={{
               color: darkMode ? "black" : "white",
